@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
-export interface TodoItem{
-  id:number;
-  task:string;
-  completed:boolean
+export interface TodoItem {
+  id: number;
+  task: string;
+  completed: boolean;
 }
 
 @Component({
@@ -14,37 +14,35 @@ export interface TodoItem{
   standalone: true,
   imports: [RouterOutlet, FormsModule, NgFor, NgClass],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // Asegúrate de que sea styleUrls
 })
 export class AppComponent {
- 
-todoList : TodoItem [] = [];
-newTask:string = ''
+  todoList: TodoItem[] = [];
+  newTask: string = '';
 
-  addTask():void{
-    if(this.newTask.trim() !== ''){
-      const newTodoItem : TodoItem = {
-        id : Date.now(),
-        task : this.newTask,
-        completed:false
-      }
+  addTask(): void {
+    if (this.newTask.trim() !== '') {
+      const newTodoItem: TodoItem = {
+        id: Date.now(),
+        task: this.newTask,
+        completed: false
+      };
 
-      this.todoList.push(newTodoItem)
-      this.newTask = ''
+      this.todoList.push(newTodoItem);
+      this.newTask = '';
     }
-
   }
 
-  toddleComplete(index :number):void{
-    console.log(index);
-    this.todoList[index].completed = !this.todoList[index].completed
-  }
-  
-  deleteTask(id:number):void{
-    this.todoList = this.todoList.filter(item => item.id !== id)
-    console.log(this.todoList);
-    
+  toddleComplete(index: number): void {
+    this.todoList[index].completed = !this.todoList[index].completed;
   }
 
+  deleteTask(id: number): void {
+    this.todoList = this.todoList.filter(item => item.id !== id);
+  }
+
+  deleteAllTasks(): void {
+    this.todoList = []; // Elimina todas las tareas
+    console.log('Todas las tareas han sido eliminadas.');
+  }
 }
-

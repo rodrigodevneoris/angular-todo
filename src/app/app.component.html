@@ -1,20 +1,24 @@
-
 <main class="todo-container">
- <div class="add-task">
-  <input [(ngModel)]="newTask" placeholder="Introducir nueva tarea"/>
-  <button (click)="addTask()"> Add</button>
- </div>
- <ul class="task-list">
-  <li *ngFor="let todoItem of todoList;let i=index" [ngClass]="{'completed':todoItem.completed}">
-    <input 
-    type="checkbox"
-    [(checked)] ="todoItem.completed"
-    (change)="toddleComplete(i)"
-    >
-    <span [class.completed]="todoItem.completed">{{todoItem.task}}</span>
-    <button (click)="deleteTask(todoItem.id)">Delete</button>
-  </li>
- </ul>
+  <div class="add-task">
+    <input [(ngModel)]="newTask" placeholder="Introducir nueva tarea" />
+    <button (click)="addTask()">Add</button>
+  </div>
+  
+  <ul class="task-list">
+    <li *ngFor="let todoItem of todoList; let i = index" [ngClass]="{'completed': todoItem.completed}">
+      <input 
+        type="checkbox"
+        [(ngModel)]="todoItem.completed"
+        (change)="toddleComplete(i)" 
+      />
+      <span [class.completed]="todoItem.completed">{{ todoItem.task }}</span>
+      <button (click)="deleteTask(todoItem.id)">Delete</button>
+    </li>
+  </ul>
+
+  <div class="delete-buttons">
+    <button (click)="deleteAllTasks()">Eliminar todas las tareas</button>
+  </div>
 </main>
 
 <router-outlet />

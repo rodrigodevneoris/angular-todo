@@ -60,3 +60,23 @@
     text-decoration: line-through;
     color: #888;
 }
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.delete-buttons button {
+    padding: 10px 15px; /* Padding más amplio para un mejor tamaño */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color de texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.delete-buttons button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
